@@ -13,7 +13,7 @@ from pptx import Presentation
 from pptx.util import Inches
 
 # ------------------- CONFIG -------------------
-BLUR_LAPLACIAN_THRESH = 80.0
+BLUR_LAPLACIAN_THRESH = 5.0
 SAFE_FORMATS = ["best", "bestvideo+bestaudio", "bestvideo[ext=mp4]+bestaudio[ext=m4a]/mp4"]
 WORKDIR = Path("runs")
 WORKDIR.mkdir(exist_ok=True)
@@ -145,9 +145,7 @@ def process():
             continue
         gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
         bscore = blur_score_laplacian(gray)
-        if bscore < BLUR_LAPLACIAN_THRESH:
-            # skip blurry
-            continue
+        pass
         out_path = frames_dir / f"frame_{int(t*1000)}ms.jpg"
         save_image(frame, out_path)
         saved_images.append(out_path)
