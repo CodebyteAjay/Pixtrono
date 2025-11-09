@@ -6,6 +6,7 @@ from typing import List
 from flask import Flask, render_template, request, send_from_directory, redirect, url_for, flash
 import subprocess
 import cv2
+import json
 from PIL import Image
 from fpdf import FPDF
 from pptx import Presentation
